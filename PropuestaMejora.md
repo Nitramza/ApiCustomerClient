@@ -29,3 +29,47 @@ Este enfoque busca mitigar vulnerabilidades  y optimizar el consumo de recursos 
     *   Elimina la inyección repetitiva de `@Value` y lecturas de disco innecesarias.
 *   **Centralización de Constantes:** Eliminación de "Magic Strings" y datos *hardcodeados*. Se usarán clases estáticas (`AppConstants`, `BusinessErrors`), reduciendo la creación de objetos en el *Heap* y eliminando *Security Hotspots* en los escaneos de código estático.
 *   **Capa de Persistencia Genérica:** Uso del patrón Repository para aislar las consultas SQL de la lógica de negocio.
+*   
+### 4. Estructura de Paquetes y Arquitectura del Código
+El proyecto busca una arquitectura en capas para garantizar la mantenibilidad y escalabilidad. A continuación, se detalla una propuesta:
+Cada paquete es dueño de sus propios recursos (Modelos, DTOs, Constantes y Servicios), minimizando la dependencia externa.
+
+📂 Árbol de Directorios
+
+com.mx.apiproyect
+│
+├── ⚙️ configuration           # Módulo de Configuración Global
+│   ├── dto                     # Dtos para mapear configs complejas
+│   ├── model                   # Modelos de configuración
+│   ├── service                 # Lógica para recargar/validar configs
+│   ├── persistence             # (Opcional) Guardar config en BD
+│   ├── component               # Lectores de Properties (Singletons)
+│   └── values                  # Constantes de configuración (Defaults)
+│
+├── 🛡️ security                # Módulo de Seguridad (JWT/Auth)
+│   ├── dto                     # LoginRequest, TokenResponse
+│   ├── model                   # UserDetails, RoleModel
+│   ├── service                 # AuthService, JwtService
+│   ├── persistence             # Repositorio de usuarios (si aplica)
+│   ├── component               # JwtFilter, PasswordEncoder
+│   └── values                  # SecurityConstants, ErrorMessages
+│
+├── 🎮 controller              # Capa de Exposición (API REST)
+│   ├── Controller.java                     
+│
+├── 🧠 business                # Núcleo de Negocio (Domain Layer)
+│   ├── dto                     # DTOs internos de negocio
+│   ├── model                   # Modelos de Dominio (Puros)
+│   ├── service                 # Reglas de negocio (Interfaces e Impl)
+│   ├── persistence             # (Opcional) Acceso a datos
+│   └── values                  # BusinessRules, Constantes de Negocio
+│
+├── 💾 dao                     # Capa de Acceso a Datos (Persistencia)
+│   ├── dto                     # Proyecciones de base de datos
+│   ├── model                   # Entidades JPA/Hibernate (Tablas)
+│   ├── service                 # GenericDao (Fachada de acceso)
+│   ├── persistence             # Repositorios
+│   └── values                  # ColumnNames
+│
+└── 🧩 component               # Módulo Transversal 
+    ├── components,java                     
