@@ -1,4 +1,3 @@
-# ApiRestCustomerOrder
 # Sistema de Gestión de Órdenes (Integración Mock + Seguridad JWT)
 
 Este proyecto es una API REST desarrollada con **Spring Boot** que simula un sistema de comercio electrónico. Incluye la integración con un servicio externo de inventarios (Mock), validaciones de negocio y un sistema de seguridad completo basado en JSON Web Tokens (JWT).
@@ -386,4 +385,28 @@ Busca el Orden por Id
 ## 🧪 Testing y Coverage
 
 El proyecto incluye pruebas unitarias con **JUnit 5** y **Mockito**.
+---
+
+## 🗄️ Base de Datos (Setup Inicial)
+
+Para que la aplicación funcione correctamente, es necesario inicializar la base de datos SQL Server. He consolidado todo el proceso en un script para facilitar el despliegue.
+
+### 📜 Script de Ejecución
+Localiza el archivo `Scripts.sql` en la carpeta raíz del proyecto.
+
+Sigue estos 4 pasos estratégicos para levantar el entorno de datos:
+
+#### PASO 1: Infraestructura Base
+Creación del contenedor de la base de datos y el esquema de organización .
+
+#### PASO 2: Definición de Tablas (DDL)
+Generación de la estructura relacional para almacenar el inventario y productos.
+
+#### PASO 3: Lógica de Negocio (Stored Procedures)
+Despliegue de los procedimientos almacenados que la API consumirá para mantener la seguridad y abstracción de datos.
+
+#### PASO 4: Seguridad y Accesos (IAM)
+Creación del usuario de servicio dedicado para la API. Aplicamos el principio de **"Least Privilege"** (Menor Privilegio), otorgando permisos únicamente para la ejecución de procedimientos.
+
+---
 
