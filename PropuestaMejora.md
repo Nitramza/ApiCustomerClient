@@ -35,7 +35,7 @@ El proyecto busca una arquitectura en capas para garantizar la mantenibilidad y 
 Cada paquete es dueño de sus propios recursos (Modelos, DTOs, Constantes y Servicios), minimizando la dependencia externa.
 
 📂 Árbol de Directorios
-
+```text
 com.mx.apiproyect
 │
 ├── ⚙️ configuration           # Módulo de Configuración Global
@@ -72,4 +72,5 @@ com.mx.apiproyect
 │   └── values                  # ColumnNames
 │
 └── 🧩 component               # Módulo Transversal 
-    ├── components,java                     
+    ├── components,java
+```              
