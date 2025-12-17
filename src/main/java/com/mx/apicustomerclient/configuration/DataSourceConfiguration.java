@@ -33,7 +33,6 @@ public class DataSourceConfiguration {
 	DataSource getDataSource() {
 		try {
 			LOG.info("Inicia config DataSource");
-			LOG.info(url+username+password+driverClassName);
 			HikariDataSource ds = new HikariDataSource();
 			ds.setDriverClassName(driverClassName);
 			ds.setJdbcUrl(DaoValue.STR_FORMAT_DRIVER.formatted((url),

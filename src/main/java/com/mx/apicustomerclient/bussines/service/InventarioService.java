@@ -32,7 +32,6 @@ public class InventarioService {
                     .bodyToMono(SalidaDto.class)
                     .block();
             final InventarioDto inventarioDto = DaoUtil.convertirObjeto(respuesta.getResultado(), InventarioDto.class) ;
-            LOG.warn(inventarioDto.toString());
             return (inventarioDto != null) ? inventarioDto.getStockDisponible(): 0;
 
         } catch (Exception e) {

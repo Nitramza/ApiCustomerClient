@@ -77,7 +77,6 @@ public class RegistraClientPersistence {
             respuestaBdModel.setExito(Integer.parseInt(respuesta.get(STR_OUTPUT_EXITO).toString()));
             respuestaBdModel.setMensaje(respuesta.get(STR_OUTPUT_MENSAJE).toString());
             respuestaBdModel.setIdentificador(respuesta.get(STR_OUTPUT_CLIENTE_ID).toString());
-            LOG.info(respuestaBdModel.toString());
             return respuestaBdModel;
 
         } catch (RuntimeException e) {

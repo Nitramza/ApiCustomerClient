@@ -64,7 +64,6 @@ public class BusquedaClientePersistence {
             final Object data = DaoUtil.obtenerObjeto(respuesta, infoJdbcDto.getResultName());
 
             final ClienteModel clienteModel = DaoUtil.convertirLista(data, ClienteModel.class).get(INT_RENGLON_CERO);
-            LOG.info(respuesta.toString());
             return clienteModel;
 
         } catch (RuntimeException e) {
